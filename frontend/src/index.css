@@ -1,0 +1,86 @@
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { @apply scroll-smooth; }
+  body { @apply overflow-x-hidden; }
+  h1 { @apply text-3xl md:text-5xl font-display font-bold leading-tight; }
+  h2 { @apply text-2xl md:text-4xl font-display font-bold leading-snug; }
+  h3 { @apply text-lg md:text-xl font-display font-bold; }
+}
+
+@layer components {
+  .btn       { @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 font-semibold text-sm transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky active:scale-[0.98]; }
+  .btn-leaf  { @apply btn bg-leaf text-white hover:bg-emerald-700 shadow-sm hover:shadow; }
+  .btn-ink   { @apply btn bg-ink text-white hover:bg-slate-800 shadow-sm hover:shadow; }
+  .btn-line  { @apply btn border-2 border-ink text-ink hover:bg-ink hover:text-white; }
+  .btn-ghost { @apply btn text-slate-600 hover:bg-slate-100 hover:text-ink; }
+  .field     { @apply w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm transition-colors duration-200 focus:border-leaf focus:outline-none focus:ring-2 focus:ring-leaf/20 placeholder:text-slate-400; }
+  .card      { @apply rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-900/5 transition-shadow duration-200; }
+  .chip      { @apply inline-flex items-center rounded-full px-3 py-1 text-sm font-medium; }
+  .section   { @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24; }
+  .hero      { @apply w-full px-4 sm:px-6 lg:px-8 py-20 md:py-28; }
+  .badge     { @apply inline-flex items-center rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-widest; }
+}
+
+@layer utilities {
+  .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .text-balance { text-wrap: balance; }
+}
+
+/* Animations */
+@keyframes fade-in     { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fade-in-up  { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slide-right { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes wm-slide-in { from { opacity: 0; transform: translateX(60px); } to { opacity: 1; transform: translateX(0); } }
+
+.animate-fade-in     { animation: fade-in 0.5s ease-out both; }
+.animate-fade-in-up  { animation: fade-in-up 0.6s ease-out both; }
+.animate-slide-right { animation: slide-right 0.5s ease-out both; }
+.wm-in              { animation: wm-slide-in 0.5s ease forwards; }
+
+@keyframes gradient-move {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-gradient-border {
+  position: relative;
+  padding: 3px;
+  border-radius: 2rem;
+  background: linear-gradient(90deg, #0B8A5F 0%, #3A86FF 50%, #FFB703 100%);
+  background-size: 300% 300%;
+  animation: gradient-move 4s ease infinite;
+}
+.animate-gradient-border > div {
+  position: relative;
+  border-radius: calc(2rem - 3px);
+}
+
+.stagger > * { @apply animate-fade-in-up; }
+.stagger > *:nth-child(1) { animation-delay: 0ms; }
+.stagger > *:nth-child(2) { animation-delay: 80ms; }
+.stagger > *:nth-child(3) { animation-delay: 160ms; }
+.stagger > *:nth-child(4) { animation-delay: 240ms; }
+.stagger > *:nth-child(5) { animation-delay: 320ms; }
+.stagger > *:nth-child(6) { animation-delay: 400ms; }
+.stagger > *:nth-child(7) { animation-delay: 480ms; }
+.stagger > *:nth-child(8) { animation-delay: 560ms; }
+
+.skeleton { @apply bg-slate-200 rounded-lg animate-pulse; }
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { @apply bg-slate-300 rounded-full; }
+::-webkit-scrollbar-thumb:hover { @apply bg-slate-400; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

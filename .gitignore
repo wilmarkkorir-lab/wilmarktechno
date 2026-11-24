@@ -1,0 +1,10 @@
+.env
+db.sqlite3
+node_modules
+dist
+backups
+logs
+media
+staticfiles
+.venv
+__pycache__
