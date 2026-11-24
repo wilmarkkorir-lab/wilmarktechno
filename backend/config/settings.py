@@ -15,7 +15,7 @@ if _env_path.exists():
             os.environ.setdefault(_k.strip(), _v.strip())
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-DEBUG = os.environ.get("DEBUG", "1") == "1"
+DEBUG = os.environ.get("DEBUG", "0") == "1"
 HTTPS = os.environ.get("HTTPS", "0") == "1"
 TESTING = "test" in sys.argv
 SECRET_KEY = os.environ.get("SECRET_KEY") or ("dev-only-insecure-key-wilmark-technologies-32b" if DEBUG else None)
