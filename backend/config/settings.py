@@ -20,7 +20,7 @@ HTTPS = os.environ.get("HTTPS", "0") == "1"
 TESTING = "test" in sys.argv
 SECRET_KEY = os.environ.get("SECRET_KEY") or ("dev-only-insecure-key-wilmark-technologies-32b" if DEBUG else None)
 if not SECRET_KEY: raise RuntimeError("Set the SECRET_KEY environment variable.")
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost,127.0.0.1,wilmarktechnologies.onrender.com").split(",")
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost,127.0.0.1,wilmarktechno.onrender.com,wilmarktechnologies.onrender.com").split(",")
 
 INSTALLED_APPS = ["django.contrib.admin", "django.contrib.auth", "django.contrib.contenttypes",
     "django.contrib.sessions", "django.contrib.messages", "django.contrib.staticfiles",
